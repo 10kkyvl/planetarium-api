@@ -23,8 +23,9 @@ from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 
 from planetarium_api.views import RegisterViewSet
 
+
 router = DefaultRouter()
-router.register(r"register", RegisterViewSet)
+router.register(r"user/register", RegisterViewSet)
 
 urlpatterns = [
     path("admin/", admin.site.urls),
@@ -39,8 +40,8 @@ urlpatterns = [
         SpectacularRedocView.as_view(url_name="schema"),
         name="redoc"
     ),
-    path("api/token/", TokenObtainPairView.as_view(), name="token_obtain_pair"),
-    path("api/token/refresh/", TokenRefreshView.as_view(), name="token_refresh"),
+    path("api/user/token/", TokenObtainPairView.as_view(), name="token_obtain_pair"),
+    path("api/user/token/refresh/", TokenRefreshView.as_view(), name="token_refresh"),
     path("api/", include(router.urls)),
 ]
 
