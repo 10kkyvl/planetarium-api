@@ -7,7 +7,7 @@ from rest_framework.viewsets import ModelViewSet
 from planetarium_api.models import ShowSession
 from planetarium_api.serializers import (
     RegisterSerializer,
-    ShowSessionSerializer
+    ShowSessionSerializer, ShowSessionListSerializer, ShowSessionDetailSerializer
 )
 
 
@@ -21,10 +21,10 @@ class RegisterViewSet(ModelViewSet):
 class ShowsViewSet(ModelViewSet):
     def list(self, request):
         queryset = ShowSession.objects.all()
-        serializer = ShowSessionSerializer(queryset, many=True)
+        serializer = ShowSessionListSerializer(queryset, many=True)
         return Response(serializer.data)
 
     def retrieve(self, request, pk=None):
         show_session = get_object_or_404(ShowSession, id=pk)
-        serializer = ShowSessionSerializer(show_session)
+        serializer = ShowSessionDetailSerializer(show_session)
         return Response(serializer.data)
