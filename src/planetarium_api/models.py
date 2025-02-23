@@ -18,6 +18,9 @@ class AstronomyShow(models.Model):
         blank=True
     )
 
+    def __str__(self):
+        return self.title
+
 
 class PlanetariumDome(models.Model):
     name = models.CharField(max_length=120)
