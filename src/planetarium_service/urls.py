@@ -21,11 +21,12 @@ from drf_spectacular.views import SpectacularSwaggerView, SpectacularRedocView, 
 from rest_framework.routers import DefaultRouter
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 
-from planetarium_api.views import RegisterViewSet
+from planetarium_api.views import RegisterViewSet, ShowsViewSet
 
 
 router = DefaultRouter()
-router.register(r"user/register", RegisterViewSet)
+router.register(r"user/register", RegisterViewSet, basename="user_register")
+router.register(r"sessions", ShowsViewSet, basename="sessions")
 
 urlpatterns = [
     path("admin/", admin.site.urls),
