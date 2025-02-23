@@ -5,6 +5,9 @@ from django.db import models
 class ShowTheme(models.Model):
     name = models.CharField(max_length=100)
 
+    def __str__(self):
+        return self.name
+
 
 class AstronomyShow(models.Model):
     title = models.CharField(max_length=120)
@@ -20,6 +23,9 @@ class PlanetariumDome(models.Model):
     name = models.CharField(max_length=120)
     rows = models.IntegerField()
     seats_in_row = models.IntegerField()
+
+    def __str__(self):
+        return self.name
 
 
 class ShowSession(models.Model):
