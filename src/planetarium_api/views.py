@@ -5,14 +5,24 @@ from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.viewsets import ModelViewSet
 
-from planetarium_api.models import ShowSession, AstronomyShow, PlanetariumDome, Reservation, Ticket
+from planetarium_api.models import (
+    ShowSession,
+    AstronomyShow,
+    PlanetariumDome,
+    Reservation,
+    Ticket
+)
 from planetarium_api.serializers import (
     RegisterSerializer,
     ShowSessionSerializer,
     ShowSessionListSerializer,
     ShowSessionDetailSerializer,
     AstronomyShowSerializer,
-    ShowThemeSerializer, PlanetariumDomeSerializer, ReservationSerializer, TicketSerializer, ReservationCreateSerializer
+    ShowThemeSerializer,
+    PlanetariumDomeSerializer,
+    ReservationSerializer,
+    TicketSerializer,
+    ReservationCreateSerializer
 )
 
 
@@ -83,5 +93,8 @@ class ReservationViewSet(ModelViewSet):
         serializer = self.get_serializer(data=request.data)
         if serializer.is_valid():
             reservation = serializer.save()
-            return Response({"reservation_id": reservation.id}, status=status.HTTP_201_CREATED)
+            return Response(
+                {"reservation_id": reservation.id},
+                status=status.HTTP_201_CREATED
+            )
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
