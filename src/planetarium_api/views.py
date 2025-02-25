@@ -19,12 +19,12 @@ class RegisterViewSet(ModelViewSet):
 
 
 class ShowsViewSet(ModelViewSet):
-    def list(self, request):
-        queryset = ShowSession.objects.all()
-        serializer = ShowSessionListSerializer(queryset, many=True)
-        return Response(serializer.data)
+    queryset = ShowSession.objects.all()
+    serializer_class = ShowSessionSerializer
 
-    def retrieve(self, request, pk=None):
-        show_session = get_object_or_404(ShowSession, id=pk)
-        serializer = ShowSessionDetailSerializer(show_session)
-        return Response(serializer.data)
+    def get_serializer_class(self):
+        if self.action == "list":
+            return ShowSessionListSerializer
+        elif self.action == "retrieve":
+            return ShowSessionDetailSerializer
+        return ShowSessionSerializer
