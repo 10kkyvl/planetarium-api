@@ -18,15 +18,8 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from drf_spectacular.views import SpectacularSwaggerView, SpectacularRedocView, SpectacularAPIView
-from rest_framework.routers import DefaultRouter
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 
-from planetarium_api.views import RegisterViewSet, ShowsViewSet
-
-
-router = DefaultRouter()
-router.register(r"user/register", RegisterViewSet, basename="user_register")
-router.register(r"sessions", ShowsViewSet, basename="sessions")
 
 urlpatterns = [
     path("admin/", admin.site.urls),
@@ -43,7 +36,7 @@ urlpatterns = [
     ),
     path("api/user/token/", TokenObtainPairView.as_view(), name="token_obtain_pair"),
     path("api/user/token/refresh/", TokenRefreshView.as_view(), name="token_refresh"),
-    path("api/", include(router.urls)),
+    path("api/", include("planetarium_api.urls")),
 ]
 
 app_name = "planetarium_api"
