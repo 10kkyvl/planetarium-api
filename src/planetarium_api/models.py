@@ -71,3 +71,11 @@ class Ticket(models.Model):
         on_delete=models.CASCADE,
         related_name="tickets"
     )
+
+    class Meta:
+        constraints = [
+            models.UniqueConstraint(
+                fields=["show_session", "row", "seat"],
+                name="unique_ticket"
+            )
+        ]
