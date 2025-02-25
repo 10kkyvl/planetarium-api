@@ -1,0 +1,118 @@
+[
+  {
+    "model": "auth.user",
+    "pk": 1,
+    "fields": {
+      "username": "alice",
+      "password": "pbkdf2_sha256$260000$somehash1",
+      "email": "alice@example.com",
+      "first_name": "Alice",
+      "last_name": "Smith",
+      "is_staff": false,
+      "is_active": true,
+      "is_superuser": false,
+      "date_joined": "2023-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "auth.user",
+    "pk": 2,
+    "fields": {
+      "username": "bob",
+      "password": "pbkdf2_sha256$260000$somehash2",
+      "email": "bob@example.com",
+      "first_name": "Bob",
+      "last_name": "Johnson",
+      "is_staff": false,
+      "is_active": true,
+      "is_superuser": false,
+      "date_joined": "2023-01-02T00:00:00Z"
+    }
+  },
+  {
+    "model": "planetarium_api.showtheme",
+    "pk": 1,
+    "fields": {
+      "name": "Cosmos"
+    }
+  },
+  {
+    "model": "planetarium_api.showtheme",
+    "pk": 2,
+    "fields": {
+      "name": "Galaxy"
+    }
+  },
+  {
+    "model": "planetarium_api.astronomyshow",
+    "pk": 1,
+    "fields": {
+      "title": "Star Wonders",
+      "description": "A journey through the stars.",
+      "themes": [1]
+    }
+  },
+  {
+    "model": "planetarium_api.astronomyshow",
+    "pk": 2,
+    "fields": {
+      "title": "Nebula Dreams",
+      "description": "Exploring colorful nebulae.",
+      "themes": [2]
+    }
+  },
+  {
+    "model": "planetarium_api.astronomyshow",
+    "pk": 3,
+    "fields": {
+      "title": "Planet Parade",
+      "description": "Showcasing the planets.",
+      "themes": [1, 2]
+    }
+  },
+  {
+    "model": "planetarium_api.planetariumdome",
+    "pk": 1,
+    "fields": {
+      "name": "Main Dome",
+      "rows": 10,
+      "seats_in_row": 20
+    }
+  },
+  {
+    "model": "planetarium_api.planetariumdome",
+    "pk": 2,
+    "fields": {
+      "name": "Secondary Dome",
+      "rows": 8,
+      "seats_in_row": 15
+    }
+  },
+  {
+    "model": "planetarium_api.showsession",
+    "pk": 1,
+    "fields": {
+      "astronomy_show": 1,
+      "planetarium_dome": 1,
+      "show_time": "2023-10-01T20:00:00Z"
+    }
+  },
+  {
+    "model": "planetarium_api.showsession",
+    "pk": 2,
+    "fields": {
+      "astronomy_show": 2,
+      "planetarium_dome": 2,
+      "show_time": "2023-10-02T18:30:00Z"
+    }
+  },
+  {
+    "model": "planetarium_api.showsession",
+    "pk": 3,
+    "fields": {
+      "astronomy_show": 3,
+      "planetarium_dome": 1,
+      "show_time": "2023-10-03T21:15:00Z"
+    }
+  }
+]
