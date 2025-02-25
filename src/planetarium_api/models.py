@@ -44,6 +44,14 @@ class ShowSession(models.Model):
     )
     show_time = models.DateTimeField()
 
+    class Meta:
+        constraints = [
+            models.UniqueConstraint(
+                fields=["planetarium_dome", "show_time"],
+                name="unique_session"
+            )
+        ]
+
 
 class Reservation(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
