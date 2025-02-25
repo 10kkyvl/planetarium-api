@@ -63,11 +63,6 @@ class ShowsViewSet(ModelViewSet):
         return ShowSessionSerializer
 
 
-class TicketViewSet(ModelViewSet):
-    queryset = Ticket.objects.all()
-    serializer_class = TicketSerializer
-
-
 class ReservationViewSet(ModelViewSet):
     queryset = Reservation.objects.all()
     permission_classes = [IsAuthenticated]
